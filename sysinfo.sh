@@ -109,11 +109,6 @@ echo -e "${GREEN}----------------------------------------${NC}"
 weather=$(curl -s "wttr.in/?format=%l:+%c+%t")
 echo -e "${YELLOW}$weather${NC}"
 
-# Fun fact without jq (using grep and cut)
-echo -e "\n${YELLOW}💡 ${BLUE}Did You Know?${NC}"
-echo -e "${GREEN}----------------------------------------${NC}"
-fun_fact=$(curl -s "https://uselessfacts.jsph.pl/random.json?language=en" | grep -o '"text":"[^"]*"' | cut -d'"' -f4)
-echo -e "${YELLOW}$fun_fact${NC}"
 
 # Footer
 echo -e "\n${MAGENTA}Report generated on: $(date)${NC}"
