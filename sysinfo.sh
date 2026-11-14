@@ -110,7 +110,9 @@ cpu_usage() {
     printf '%s\n%s\n' "$a" "$b" | awk '
         {
             total = 0
-            for (i = 2; i <= NF; i++) total += $i
+            # guest and guest_nice are already included in user and nice.
+            # Sum only user through steal to avoid counting them twice.
+            for (i = 2; i <= 9 && i <= NF; i++) total += $i
             idle = $5 + $6      # idle + iowait
             if (NR == 1) { t1 = total; i1 = idle } else { t2 = total; i2 = idle }
         }

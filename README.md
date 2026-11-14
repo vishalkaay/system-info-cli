@@ -50,3 +50,9 @@ chmod +x sysinfo.sh
 - Everything is read locally, mostly from `/proc` and `/sys`, so it works the same across distributions and needs nothing beyond Bash and the usual core utilities.
 - Nothing is sent over the network unless you pass `--net`. That option contacts [ifconfig.me](https://ifconfig.me) and [wttr.in](https://wttr.in), with a four-second limit on each, and needs `curl`.
 - A value the machine doesn't expose is shown as `unavailable`.
+
+## Tests
+
+Run `python -m unittest discover -s tests -v` on Linux with Python 3.8 or newer.
+The tests use only the standard library and stub network requests; they do not
+contact external services.
